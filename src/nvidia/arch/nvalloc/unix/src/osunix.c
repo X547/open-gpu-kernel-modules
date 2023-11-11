@@ -29,7 +29,7 @@
 \***************************************************************************/
 
 #include <osfuncs.h>
-#include <os/os.h> 
+#include <os/os.h>
 
 static void initOSSpecificFunctionPointers(OBJOS *);
 static void initMiscOSFunctionPointers(OBJOS *);
@@ -58,7 +58,7 @@ initMiscOSFunctionPointers(OBJOS *pOS)
 static void
 initUnixOSFunctionPointers(OBJOS *pOS)
 {
-#if defined(NVCPU_X86_64)
+#if defined(NVCPU_X86_64) && !defined(__HAIKU__)
     pOS->osNv_rdcr4                  = nv_rdcr4;
     pOS->osNv_cpuid                  = nv_cpuid;
 #endif

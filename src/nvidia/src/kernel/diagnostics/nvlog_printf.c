@@ -135,7 +135,7 @@ nvDbg_PrintMsg
     int debuglevel_min;
 
 #if   defined(DEVELOP) || defined(DEBUG) || defined(QA_BUILD)
-    debuglevel_min = LEVEL_NOTICE;
+    debuglevel_min = LEVEL_INFO;
 #else
     debuglevel_min = LEVEL_ERROR;
 #endif

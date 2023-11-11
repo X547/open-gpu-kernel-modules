@@ -89,7 +89,7 @@
 #endif /* defined(__FreeBSD__) */
 
 /* XXXar don't define NV_UNIX on MacOSX or vxworks or QNX */
-#if (defined(__unix__) || defined(__unix) || defined(__INTEGRITY) ) && !defined(nvmacosx) && !defined(vxworks) && !defined(NV_UNIX) && !defined(__QNX__) && !defined(__QNXNTO__)/* XXX until removed from Makefiles */
+#if (defined(__unix__) || defined(__unix) || defined(__INTEGRITY) || defined(__HAIKU__) ) && !defined(nvmacosx) && !defined(vxworks) && !defined(NV_UNIX) && !defined(__QNX__) && !defined(__QNXNTO__)/* XXX until removed from Makefiles */
 #   define NV_UNIX
 #endif /* defined(__unix__) */
 

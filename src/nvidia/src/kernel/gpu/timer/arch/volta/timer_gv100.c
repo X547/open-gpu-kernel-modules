@@ -77,7 +77,7 @@ tmrSetCurrentTime_GV100
     {
         NV_PRINTF(LEVEL_ERROR,
                   "ERROR: Write to PTIMER attempted even though Level 0 PLM is disabled.\n");
-        NV_ASSERT(0);
+        //NV_ASSERT(0);
         status = NV_ERR_PRIV_SEC_VIOLATION;
     }
 
