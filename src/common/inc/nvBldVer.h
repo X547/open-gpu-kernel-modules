@@ -42,7 +42,7 @@
     #define NV_PUBLIC_BRANCH             r571_57
 #endif
 
-#if defined(NV_LINUX) || defined(NV_BSD) || defined(NV_SUNOS)
+#if defined(NV_LINUX) || defined(NV_BSD) || defined(NV_SUNOS) || defined(NV_HAIKU)
 #define NV_BUILD_BRANCH_VERSION         "rel/gpu_drv/r570/r571_57-276"
 #define NV_BUILD_CHANGELIST_NUM         (35438409)
 #define NV_BUILD_TYPE                   "Official"
