@@ -348,7 +348,7 @@
 #define RMCFG_CLASS_NV_IMEX_SESSION               1
 #define RMCFG_CLASS_NV01_MEMORY_FLA               1
 #define RMCFG_CLASS_NV_MEMORY_EXPORT              1
-#define RMCFG_CLASS_NV_CE_UTILS                   1
+#define RMCFG_CLASS_NV_CE_UTILS                   0
 #define RMCFG_CLASS_NV_MEMORY_FABRIC              1
 #define RMCFG_CLASS_NV_MEMORY_FABRIC_IMPORT_V2    1
 #define RMCFG_CLASS_NV_MEMORY_FABRIC_IMPORTED_REF  1

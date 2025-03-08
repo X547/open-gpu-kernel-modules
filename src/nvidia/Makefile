@@ -79,7 +79,7 @@ CFLAGS += -fno-stack-protector
 ifeq ($(TARGET_ARCH),x86_64)
   CFLAGS += -msoft-float
   CFLAGS += -mno-red-zone
-  CFLAGS += -mcmodel=kernel
+# CFLAGS += -mcmodel=kernel
   CFLAGS += -mno-mmx
   CFLAGS += -mno-sse
   CFLAGS += -mno-sse2
@@ -101,7 +101,7 @@ ifeq ($(TARGET_ARCH),riscv64)
   CFLAGS += -mno-relax
 endif
 
-CFLAGS += -fno-pic
+CFLAGS += -fpic
 
 CFLAGS += -D_LANGUAGE_C
 CFLAGS += -D__NO_CTYPE
@@ -137,9 +137,9 @@ CFLAGS += -DNV_PRINTF_STRINGS_ALLOWED=1
 CFLAGS += -DNV_ASSERT_FAILED_USES_STRINGS=1
 CFLAGS += -DPORT_ASSERT_FAILED_USES_STRINGS=1
 
-ifeq ($(DEBUG),1)
-  CFLAGS += -gsplit-dwarf
-endif
+#ifeq ($(DEBUG),1)
+#  CFLAGS += -gsplit-dwarf
+#endif
 
 # Define how to perform dead code elimination: place each symbol in its own
 # section at compile time, and garbage collect unreachable sections at link
@@ -159,7 +159,7 @@ ifeq ($(TARGET_ARCH),x86_64)
 
   #
   # GCC flags -fcf-protection=branch and -mindirect-branch=extern-thunk can
-  # be used together after GCC version 9.4.0. See 
+  # be used together after GCC version 9.4.0. See
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=93654 for details.
   # Check if GCC version is appropriate.
   #
@@ -182,8 +182,8 @@ ifeq ($(TARGET_ARCH),x86_64)
     CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -fcf-protection=branch)
   endif
   CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -fno-jump-tables)
-  CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mindirect-branch-register)
-  CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mindirect-branch=thunk-extern)
+# CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mindirect-branch-register)
+# CONDITIONAL_CFLAGS += $(call TEST_CC_ARG, -mindirect-branch=thunk-extern)
 endif
 
 CFLAGS += $(CONDITIONAL_CFLAGS)

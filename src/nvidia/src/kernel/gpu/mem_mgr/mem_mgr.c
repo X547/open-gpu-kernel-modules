@@ -309,7 +309,7 @@ memmgrTestCeUtils
 
     NV_ASSERT_OR_RETURN(pMemoryManager->pCeUtils != NULL, NV_ERR_INVALID_STATE);
 
-    if (pMemoryManager->pCeUtils->pLiteKernelChannel != NULL)
+    if (0 || pMemoryManager->pCeUtils->pLiteKernelChannel != NULL)
     {
         //
         // BUG 4167899: Temporarily skip test in case of lite mode
@@ -330,7 +330,7 @@ memmgrTestCeUtils
 
     NV_ASSERT_OK_OR_GOTO(status,
         memdescCreate(&pSysMemDesc, pGpu, sizeof sysmemData, 0, NV_TRUE, ADDR_SYSMEM,
-                      NV_MEMORY_UNCACHED, MEMDESC_FLAGS_NONE),
+                      NV_MEMORY_CACHED, MEMDESC_FLAGS_NONE),
         failed);
     memdescTagAlloc(status, NV_FB_ALLOC_RM_INTERNAL_OWNER_UNNAMED_TAG_138, 
                     pSysMemDesc);

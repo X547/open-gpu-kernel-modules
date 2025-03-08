@@ -1209,12 +1209,12 @@ RmSetupRegisters(
     NV_DEV_PRINTF(NV_DBG_SETUP, nv, "RmSetupRegisters for 0x%x:0x%x\n",
               nv->pci_info.vendor_id, nv->pci_info.device_id);
     NV_DEV_PRINTF(NV_DBG_SETUP, nv, "pci config info:\n");
-    NV_DEV_PRINTF(NV_DBG_SETUP, nv, "   registers look  like: " NvP64_fmt " " NvP64_fmt,
+    NV_DEV_PRINTF(NV_DBG_SETUP, nv, "   registers look  like: " NvP64_fmt " " NvP64_fmt "\n",
               nv->regs->cpu_address, nv->regs->size);
 
     if (nv->fb != NULL)
     {
-        NV_DEV_PRINTF(NV_DBG_SETUP, nv, "   fb        looks like: " NvP64_fmt " " NvP64_fmt,
+        NV_DEV_PRINTF(NV_DBG_SETUP, nv, "   fb        looks like: " NvP64_fmt " " NvP64_fmt "\n",
                 nv->fb->cpu_address, nv->fb->size);
     }
 

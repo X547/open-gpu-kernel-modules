@@ -29,16 +29,24 @@
 
 NvU32 nv_rdcr4(OBJOS *pOS)
 {
+#ifdef __HAIKU__
+    return 0;
+#else
     NvU64 val;
     asm volatile ("movq %%cr4,%0" : "=r" (val));
     return (NvU32)val;
+#endif
 }
 
 NvU64 nv_rdcr3(OBJOS *pOS)
 {
+#ifdef __HAIKU__
+    return 0;
+#else
     NvU64 val;
     asm volatile ("movq %%cr3,%0" : "=r" (val));
     return val;
+#endif
 }
 
 #endif
