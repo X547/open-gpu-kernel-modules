@@ -315,9 +315,11 @@ memmgrTestCeUtils
     NvU32              sysmemData    = 0x11223345;
     NV_STATUS          status;
 
+    NV_PRINTF(LEVEL_INFO, "memmgrTestCeUtils\n");
+
     NV_ASSERT_OR_RETURN(pMemoryManager->pCeUtils != NULL, NV_ERR_INVALID_STATE);
 
-    if (pMemoryManager->pCeUtils->pLiteKernelChannel != NULL)
+    if (0 || pMemoryManager->pCeUtils->pLiteKernelChannel != NULL)
     {
         //
         // BUG 4167899: Temporarily skip test in case of lite mode
@@ -338,17 +340,25 @@ memmgrTestCeUtils
 
     NV_ASSERT_OK_OR_GOTO(status,
         memdescCreate(&pSysMemDesc, pGpu, sizeof sysmemData, 0, NV_TRUE, ADDR_SYSMEM,
-                      NV_MEMORY_UNCACHED, MEMDESC_FLAGS_NONE),
+                      NV_MEMORY_CACHED, MEMDESC_FLAGS_NONE),
         failed);
     memdescTagAlloc(status, NV_FB_ALLOC_RM_INTERNAL_OWNER_UNNAMED_TAG_138, 
                     pSysMemDesc);
     NV_ASSERT_OK_OR_GOTO(status, status, failed);
     sysSurface.pMemDesc = pSysMemDesc;
 
+    NV_PRINTF(LEVEL_INFO, "(1)\n");
     NV_ASSERT_OK_OR_GOTO(status, memmgrMemWrite(pMemoryManager, &vidSurface, &vidmemData, sizeof vidmemData, TRANSFER_FLAGS_NONE),      failed);
+    NV_PRINTF(LEVEL_INFO, "(2)\n");
     NV_ASSERT_OK_OR_GOTO(status, memmgrMemWrite(pMemoryManager, &sysSurface, &sysmemData, sizeof sysmemData, TRANSFER_FLAGS_NONE),      failed);
+    NV_PRINTF(LEVEL_INFO, "(3)\n");
     NV_ASSERT_OK_OR_GOTO(status, memmgrMemCopy (pMemoryManager, &sysSurface, &vidSurface, sizeof vidmemData, TRANSFER_FLAGS_PREFER_CE), failed);
+    NV_PRINTF(LEVEL_INFO, "(4)\n");
     NV_ASSERT_OK_OR_GOTO(status, memmgrMemRead (pMemoryManager, &sysSurface, &sysmemData, sizeof sysmemData, TRANSFER_FLAGS_NONE),      failed);
+    NV_PRINTF(LEVEL_INFO, "(5)\n");
+
+    NV_PRINTF(LEVEL_INFO, "sysmemData: %x\n", sysmemData);
+    NV_PRINTF(LEVEL_INFO, "vidmemData: %x\n", vidmemData);
     NV_ASSERT_TRUE_OR_GOTO(status, sysmemData == vidmemData, NV_ERR_INVALID_STATE, failed);
 
 failed:

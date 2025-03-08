@@ -178,7 +178,7 @@ static inline void ceutilsServiceInterrupts(struct CeUtils *pCeUtils) {
 
 
 
-#if defined(DEBUG) || defined (DEVELOP)
+#if __cplusplus && (defined(DEBUG) || defined (DEVELOP))
 NVOC_PREFIX(ceutilsapi) class CeUtilsApi : GpuResource
 {
 public:

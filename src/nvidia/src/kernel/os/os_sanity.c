@@ -302,9 +302,9 @@ NV_STATUS osVerifySystemEnvironment(
 
     // PCIE GEN4 fmodel MSI is broken as per bug 2076928 comment 42 and will not be fixed
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
-    if (IS_FMODEL(pGpu)                                                        &&
+    if (0 || (IS_FMODEL(pGpu)                                                        &&
         pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_IS_FMODEL_MSI_BROKEN) &&
-        kbifIsMSIEnabled(pGpu, pKernelBif))
+        kbifIsMSIEnabled(pGpu, pKernelBif)))
     {
         return NV_OK;
     }

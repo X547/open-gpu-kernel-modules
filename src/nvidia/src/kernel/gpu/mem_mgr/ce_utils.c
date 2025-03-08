@@ -659,7 +659,7 @@ ceutilsUpdateProgress_IMPL
     return swLastCompletedPayload;
 }
 
-#if defined(DEBUG) || defined (DEVELOP)
+#if __cplusplus && defined(DEBUG) || defined (DEVELOP)
 NV_STATUS
 ceutilsapiCtrlCmdCheckProgress_IMPL
 (
