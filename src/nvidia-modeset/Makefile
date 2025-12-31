@@ -103,9 +103,9 @@ ifeq ($(TARGET_ARCH),aarch64)
 endif
 
 ifeq ($(TARGET_ARCH),riscv64)
-  CFLAGS += -march=rv64imac_zicsr_zifencei
-  CFLAGS += -mabi=lp64
-  CFLAGS += -mcmodel=medany
+# CFLAGS += -march=rv64gc
+# CFLAGS += -mabi=lp64
+# CFLAGS += -mcmodel=medany
   CFLAGS += -mno-relax
 endif
 
@@ -129,7 +129,7 @@ ifeq ($(TARGET_ARCH),x86_64)
 
   #
   # GCC flags -fcf-protection=branch and -mindirect-branch=extern-thunk can
-  # be used together after GCC version 9.4.0. See 
+  # be used together after GCC version 9.4.0. See
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=93654 for details.
   # Check if GCC version is appropriate.
   #
